@@ -49,7 +49,10 @@ _If you preview the site another way, describe that way here instead._
 
 ## Data notes
 
-_Replace this line. Say which rows you left out and why, and how each figure on the site is defined. "Five things that will bite you" in the description sheet lists the problems to cover._
+- **Implausible prices:** sales under $10,000 (40 rows, including one at $0) are left out of every figure. The rule is stated on the page.
+- **Median sale price by city:** the middle sale price of each city's remaining sales (the average of the two middle values when the count is even), rounded to whole dollars.
+
+_Add notes on the other items in "Five things that will bite you" as the site uses those columns._
 
 ## How we checked our numbers
 
@@ -57,7 +60,8 @@ _Replace this line. List at least three numbers shown on the site. Check each on
 
 | Number on the site | Where it appears | How we checked it | Result |
 |---|---|---|---|
-| | | | |
+| Median sale price for every city (18 values), e.g. Champaign $240,000 | Home page table | `python checks/median_price_by_city.py` (SQLite file + Python `statistics.median`, not the site's code) | All 18 match |
+| 40 of 35,442 sales left out | Home page, rule box | Same check script: rows with `sale_price < 10000` | Match |
 | | | | |
 | | | | |
 
